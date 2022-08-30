@@ -24,13 +24,16 @@ export const carregaDataTopo = (dataTopo) => {
 
 export const carregaItens = ({ valor, horario, concluida}, id) => {
   const tarefa = document.createElement('li');
+  const tarefaButtons= document.createElement('div');
+  tarefaButtons.classList.add('task__buttons')
   const conteudo = `<p class="content">${horario} * ${valor}</p>`;
   if (concluida){
       tarefa.classList.add('done');
   }
   tarefa.classList.add('task');
   tarefa.innerHTML = conteudo;
-  tarefa.appendChild(BotaoConclui(id));
-  tarefa.appendChild(BotaoDeleta(id));
+  tarefaButtons.appendChild(BotaoConclui(id));
+  tarefaButtons.appendChild(BotaoDeleta(id));
+  tarefa.appendChild(tarefaButtons);
   return tarefa;
 }
